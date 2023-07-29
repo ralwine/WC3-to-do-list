@@ -1,4 +1,4 @@
-const pg = require('pg')
+const pg = require("pg");
 
 const pool = new pg.Pool({
     // Check name of DB in instructions

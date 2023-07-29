@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const app = express();
+
+const router = require('./routes/tasks.router');
 
 // Setup body parser - to translating request body into JSON
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,8 +12,8 @@ app.use(bodyParser.json());
 // from the server/public folder
 app.use(express.static('server/public'));
 
-let tasksRouter = require('./routes/tasks.router');
-app.use('/tasks', tasksRouter);
+
+app.use('/tasks', router);
 
 
 // Start express

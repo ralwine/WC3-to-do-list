@@ -1,0 +1,77 @@
+PLAN and it's EVOLUTION
+
+THURSDAY
+    - Read over project instructions a couple of times before formulating plan. Start with basic outline, take a lengthy break 
+before reading over everything again and fleshing out. Start visualizing the end result
+
+FRIDAY - Work on plan/outline a little more before proceeding on the project itself. That evening should be devoted to the most 
+barebones of requirements: make your files and folders, nest those files and folders in their respective places, set up the 
+database and link to pool, link/source files into html, require/install dependencies, etc. Essentially, the goal here is to get 
+the server up and running, appearing the browser, and then getting a good night's sleep!
+
+SATURDAY - Get more of the plan tanslated from the outline into textual discourse. Main goal today is getting the static HTML 
+("Add Task" button, input) in place, the listeners/handlers functioning for said HTML and the GET/POST routes working. Feeling 
+more confident in utilizing POSTMAN, but should not hesitate to reach out on Slack if in need of a refresher regarding its use. 
+Once this is accomplished and tasks are being added to DOM, work can commence on DELETE function if time/energy allows.
+
+SUNDAY -
+
+
+
+
+1.  Create "weekend-to-do-app" database w/ SQL in Postico
+- Columns should reflect serial "id", "task",  "complete", "delete" (or do we want these two buttons in the same column?)
+- be mindful of naming conventions!... reasonable varchar for task!
+- be sure to put query data into DB.sql file
+
+2.  HTML -> Basics
+- CSS/js/jQuery files linked/sourced in
+- Header (if not already provided)
+- Inputs
+	- looks like just one for task so far
+- Buttons
+	- submit to start
+
+3.  Client logic 
+- listeners on buttons
+	- submit
+	- delete
+	- complete checkbox?
+- Functions
+	- handle submit
+		- post/get task to DB using ajax
+	- complete
+		- checkbox appended to rows in DOM - unknown boolean
+when triggered by submit 
+	- delete
+		- button appended to rows in DOM 
+		- should remove task from both DOM and DB
+		- STRETCH use bootstrap to restyle button
+when triggered by submit 
+	- refresh 
+- input renders
+	- visual representation/color change in CSS when task is completed (checkbox is checked)... toggle?
+	- for loop to loop through tasks
+
+4.  Server side
+- basic server.js stuff
+	- require router
+	- require modules (express, body-p, etc.)
+- pool/modules folder -link up between DB -server
+	- use DB name in config setup
+- router
+	- POST/GET routes
+		- please keep you url names all lowercase
+			- should only need one url
+		- submit
+		- complete -unknown BOOLEAN
+		- delete
+
+
+5.  CSS 
+- render functions first before hard coding here!
+- STYLING
+	- no boring background color
+	- change font-family, resize where appropriate
+	- STRETCH use bootstrap to restyle submit button
+	- STRETCH use  bootstrap to restyle text input

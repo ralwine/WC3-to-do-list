@@ -1,14 +1,19 @@
 $(document).ready(onReady);
 
 function onReady() {
-    getTasks();
-    $('#add').on('click', postTask);
+    submitTasks();
+    $('#submit-task').on('click', addTasks);
 }
 
-function getTasks() {
-    console.log("in getTasks");
+// might as well start with our handleSubmit
+function submitTasks(){
+    // target our input with the submit button.. cl first
+    console.log("submit is being handled!")
 }
 
-function postTask() {
-    console.log("in postTask");
+function addTasks() {
+    console.log("in addTasks");
+    
+    
 }
+

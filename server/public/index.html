@@ -11,13 +11,27 @@
 <body>
     <header>
         <h1>DO YOUR CHORES!</h1>
+    </header>
     <main>
         <form>
             <input type="text" id="task-name" placeholder="What do you need to do?">
             <button id="submit-task">Submit Task</button>
         </form>
+        <table>
+            <thead>
+                <tr>
+                    <!--Putting these in now, will style later-->
+                    <th>Task Name</th>
+                    <th>Complete?</th>
+                    <th>Delete Task</th>
+                    <tbody id="taskTableBody">
+                        <!--Our tasks and further functioning will append here-->
+                    </tbody>
+                </tr>
+            </thead>
+        </table>
     </main>
-    </header>
+    
     
 </body>
 </html>

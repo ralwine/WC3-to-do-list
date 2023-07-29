@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 // from the server/public folder
 app.use(express.static('server/public'));
 
-let tasksRouter = require('./routes/TDL.router');
-app.use('/TDL', tasksRouter);
+let tasksRouter = require('./routes/tasks.router');
+app.use('/tasks', tasksRouter);
 
 
 // Start express

@@ -9,19 +9,19 @@ const pool = require('../modules/pool.js');
 
 router.post('/', (req, res) => {
     // only one input, so this will look a little weird in an array
-    const task = req.body.task
+    const task = req.body
     const queryParameters = [task]
 
     const queryText = `
-            INSERT INTO "weekend-to-do-app" ("task")
+            INSERT INTO "todos" ("task")
             VALUES ($1);`;
     pool.query(queryText, [task])
         .then(result => {
-            console.log("POST is okay in router")
+            console.log("POST is okay in router", task)
             res.sendStatus(201);
         })
         .catch(error =>{
-            console.log("Error in POST from router")
+            console.log("Error in POST from router", error)
             res.sendStatus(500)
         })
 

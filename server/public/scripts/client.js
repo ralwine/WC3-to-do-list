@@ -1,4 +1,7 @@
 $(document).ready(onReady);
+    console.log("The house of bling")
+    //getTasks()
+
 
 function onReady() {
     
@@ -30,5 +33,18 @@ function addTasks(task) {
     })
 }
 
-//function getTasks(){}
+function getTasks(){
+    console.log("in getTasks")
+    $.ajax({
+        type: 'GET',
+        url: '/tasks'
+    }).then(function (response){
+        console.log("making GET request", response);
+        //render here?
+        //render()
+    }).catch(function (error){
+        console.log('error in GETting tasks!', error);
+    })
+
+}
 

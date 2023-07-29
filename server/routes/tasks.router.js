@@ -2,10 +2,25 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-//const TODOlist = [];
+const TODOlist = [];
 // It's going to be an array because each row more than just a task, right?
 
 // remember url ='/tasks'
+router.get('/', (req, res)=>{
+    const queryText = `
+        SELECT * FROM "todos";`;
+    
+    pool.query(queryText)
+        .then((result) =>{
+            console.log("GET is okay in router", result)
+            res.send(result.rows)
+        })
+        .catch((error)=>{
+            console.log("Error in GET from router", error)
+            res.sendStatus(500)
+        })
+
+})
 
 router.post('/', (req, res) => {
     // only one input, so this will look a little weird in an array
@@ -20,7 +35,7 @@ router.post('/', (req, res) => {
             console.log("POST is okay in router", task)
             res.sendStatus(201);
         })
-        .catch(error =>{
+        .catch((error) =>{
             console.log("Error in POST from router", error)
             res.sendStatus(500)
         })

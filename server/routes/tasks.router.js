@@ -24,13 +24,13 @@ router.get('/', (req, res)=>{
 
 router.post('/', (req, res) => {
     // only one input, so this will look a little weird in an array
-    const task = req.body
-    const queryParameters = [task]
+    const task = [req.body.name, req.body.complete]
+    const queryParameters = task
 
     const queryText = `
-            INSERT INTO "todos" ("task")
-            VALUES ($1);`;
-    pool.query(queryText, [task])
+            INSERT INTO "todos" ("task", "complete")
+            VALUES ($1, $2);`;
+    pool.query(queryText, task)
         .then(result => {
             console.log("POST is okay in router", task)
             res.sendStatus(201);

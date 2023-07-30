@@ -66,6 +66,8 @@ function deleteTasks() {
         alert("Error deleting task: ", error)
     })
 }
+
+
 function render(tasks) {
     $('#taskTableBody').empty();
     console.log(tasks);
@@ -91,6 +93,6 @@ function render(tasks) {
         `);
         newRow.data('id', task.id)
         $('#taskTableBody').append(newRow);
-
+// task.task wtf? It works!
     }
 }

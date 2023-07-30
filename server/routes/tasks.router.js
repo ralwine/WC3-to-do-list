@@ -37,13 +37,29 @@ router.post('/', (req, res) => {
 
 })
 
+router.put('/:id', (req, res) => {
+    console.log('/ PUT:', req.params.id, req.body);
+    const query = `
+        UPDATE "todos" SET status=$1 WHERE id=$2;`;
+    const values = [req.body.newStatus, req.params.id];
+    pool.query( query, values )
+        .then((results)=>{
+            console.log("PUT successful in router")
+            res.sendStatus(200);
+         })
+         .catch((error)=>{
+            console.log("Error with PUT in router", error)
+            res.sendStatus(500)
+         })
+})
+
 
 
 router.delete('/:id', (req, res) => {
     // hopefully this is all params
     const taskToDeleteID = req.params.id
     const queryText = `DELETE FROM "todos" WHERE id=$1;`
-    
+
     //const values = [ req.params.id ]
     pool.query(queryText, [taskToDeleteID])
         .then((result) => {

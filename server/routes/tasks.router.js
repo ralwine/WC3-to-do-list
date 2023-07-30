@@ -42,22 +42,46 @@ router.post('/', (req, res) => {
 
 })
 
-router.delete('/:id', (req, res) => {
-    // hopefully this is all params
-    const taskToDeleteID = req.params.id
-    const queryText = `DELETE FROM "todos" WHERE id=$1;`
-    //const values = [ req.params.id ]
+router.put('/:id', (req, res) => {
+    console.log("Router PUT initializing", req.params)
 
-    pool.query(queryText, [taskToDeleteID])
-        .then((result) => {
-            console.log("DELETE is okay in router", taskToDeleteID)
+    const taskID = req.params.id
+
+    let newStatus = !false
+    const queryParams = [newStatus, taskID]
+
+    let queryText = `
+        UPDATE "todos" SET "complete" =$1 WHERE id=$2;`
+    console.log(`Connecting to PUT route. taslID =${taskID}, newStatus =${newStatus}`)
+
+    pool.query(queryText, queryParams)
+        .then((response) => {
+            console.log("PUT is reaching DB", taskID)
             res.sendStatus(200)
         })
         .catch((error) => {
             console.log("Error making DB query: ", queryText)
-            console.log("Error in DELETE from router", error)
+            console.log("Error in PUT from router", error)
             res.sendStatus(500)
         })
-})
+    })
 
-module.exports = router;
+    router.delete('/:id', (req, res) => {
+        // hopefully this is all params
+        const taskToDeleteID = req.params.id
+        const queryText = `DELETE FROM "todos" WHERE id=$1;`
+        //const values = [ req.params.id ]
+
+        pool.query(queryText, [taskToDeleteID])
+            .then((result) => {
+                console.log("DELETE is okay in router", taskToDeleteID)
+                res.sendStatus(200)
+            })
+            .catch((error) => {
+                console.log("Error making DB query: ", queryText)
+                console.log("Error in DELETE from router", error)
+                res.sendStatus(500)
+            })
+    })
+
+    module.exports = router;

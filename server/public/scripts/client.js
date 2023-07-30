@@ -8,7 +8,7 @@ function onReady() {
 
     $('#submit-task').on('click', handleSubmit);
     // Checkbox listener for completed task?
-
+    //$
     //DELETE button
     $('#taskTableBody').on('click', '#delete-task', deleteTasks)
 }
@@ -55,6 +55,10 @@ function getTasks() {
         console.log('error in GETting tasks!', error);
     })
 
+}
+
+function finishTasks() {
+    console.log("in finished tasks")
 }
 
 function deleteTasks() {

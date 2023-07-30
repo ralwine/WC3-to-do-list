@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         SELECT * FROM "todos";`;
     pool.query(queryText)
         .then((result) => {
-            console.log("GET is okay in router")
+            console.log("GET is okay in router", result.rows)
             res.send(result.rows)
         })
         .catch((error) => {
@@ -36,6 +36,8 @@ router.post('/', (req, res) => {
         })
 
 })
+
+
 
 router.delete('/:id', (req, res) => {
     // hopefully this is all params

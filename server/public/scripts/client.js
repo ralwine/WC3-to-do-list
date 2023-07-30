@@ -17,7 +17,7 @@ function handleSubmit(event) {
     addTasks(task);
 }
 function addTasks(newTask) {
-    
+
     console.log("in addTasks", newTask);
     // this will be a POST route
     const taskID = {
@@ -43,7 +43,7 @@ function getTasks() {
         type: 'GET',
         url: '/tasks'
     }).then(function (response) {
-        console.log("making GET request");
+        console.log("making GET request", response.name);
         //render here?
         render(response)
     }).catch(function (error) {
@@ -71,12 +71,17 @@ function render(tasks) {
     console.log(tasks);
     // for loop time
     for (let task of tasks) {
-        //console.log("in for loop", task)
+        console.log("in for loop", task.name)
         //appending items, just task(s) to start
         let newRow = $(`
             <tr>
-                <td>${task.name}</td>
-                <td>${task.status}</td>
+                <td>${task.task}</td>
+                <td>${task.status}
+                    
+                    <button class="change-status">
+                     Finished
+                    </button>
+                </td>
                 <td>
                     <button id ="delete-task">
                         Delete Task

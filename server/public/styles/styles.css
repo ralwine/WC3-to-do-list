@@ -1,3 +1,17 @@
 body{
     background-color: cyan;
 }
+header{
+    font-family:cursive;
+    color: rgb(85, 66, 41);
+    text-decoration:wavy;
+}
+
+thead{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(85, 66, 41);
+}
+
+tbody{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

@@ -60,7 +60,7 @@ function getTasks() {
 function deleteTasks() {
     console.log("in deleteBook");
     console.log("clicking on: ", $(this));
-    const taskID = $(this)/*.parent().parent()*/.data('id');
+    const taskID = $(this).parent().parent().data('id');
     console.log("deleting: ", taskID); //showing undefined!
     //ajax DELETE
     $.ajax({

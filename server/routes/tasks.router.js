@@ -44,17 +44,17 @@ router.post('/', (req, res) => {
 
 router.delete('/deletetasks/:id', (req, res) => {
     // hopefully this is all params
-    //const taskToDeleteID = req.params.id
-    const query = `DELETE FROM "todos" WHERE id=$1;`
-    const values = [ req.params.id ]
+    const taskToDeleteID = req.params.id
+    const queryText = `DELETE FROM "todos" WHERE id=$1;`
+    //const values = [ req.params.id ]
 
-    pool.query(query, values)//queryText, [taskToDeleteID])
+    pool.query(queryText, [taskToDeleteID])
         .then((result) => {
-            console.log("DELETE is okay in router")//, taskToDeleteID)
+            console.log("DELETE is okay in router", taskToDeleteID)
             res.sendStatus(200)
         })
         .catch((error) => {
-            console.log("Error making DB query: ")//, queryText)
+            console.log("Error making DB query: ", queryText)
             console.log("Error in DELETE from router", error)
             res.sendStatus(500)
         })

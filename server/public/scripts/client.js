@@ -4,7 +4,8 @@ getTasks();
 onReady();
 function onReady() {
     $('#submit-task').on('click', handleSubmit);
-    // Checkbox listener for completed task?
+    // Checkbox listener for completed task? Dropdown? Button?
+    $('#taskTableBody').on('click', '#change-status', changeTaskStatus)
     //DELETE button
     $('#taskTableBody').on('click', '#delete-task', deleteTasks)
 }
@@ -67,6 +68,10 @@ function deleteTasks() {
     })
 }
 
+function changeTaskStatus(){
+    console.log("in changeTaskStaus");
+    console.log("clicking on: ", $(this));
+}
 
 function render(tasks) {
     $('#taskTableBody').empty();
@@ -79,9 +84,8 @@ function render(tasks) {
             <tr>
                 <td>${task.task}</td>
                 <td>${task.status}
-                    
-                    <button class="change-status">
-                     Finished
+                    <button id="change-status">
+                        Finished
                     </button>
                 </td>
                 <td>

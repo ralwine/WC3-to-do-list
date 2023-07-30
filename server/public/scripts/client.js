@@ -65,7 +65,7 @@ function deleteTasks() {
     //ajax DELETE
     $.ajax({
         method: 'DELETE',
-        url: `/tasks/deletetasks/${taskID}`
+        url: `/tasks/${taskID}`
     }).then((response) => {
         console.log(`Deleted task id: ${taskID}`)
         getTasks()
@@ -93,7 +93,7 @@ function render(tasks) {
                 </td>
             </tr>
         `);
-        newRow.data('id', tasks.id)
+        newRow.data('id', task.id)
         $('#taskTableBody').append(newRow);
 
     }

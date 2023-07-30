@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
 
 })
 
-router.delete('/deletetasks/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     // hopefully this is all params
     const taskToDeleteID = req.params.id
     const queryText = `DELETE FROM "todos" WHERE id=$1;`

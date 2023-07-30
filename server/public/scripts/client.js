@@ -7,6 +7,10 @@ onReady();
 function onReady() {
 
     $('#submit-task').on('click', handleSubmit);
+    // Checkbox listener for completed task?
+
+    //DELETE button
+    $('#taskTableBody').on('click', '#delete-task', deleteTasks)
 }
 
 // might as well start with our handleSubmit
@@ -53,6 +57,10 @@ function getTasks() {
 
 }
 
+function deleteTasks() {
+    console.log("in deleteBook")
+}
+
 function render(tasks) {
     $('#taskTableBody').empty();
     console.log(tasks);
@@ -65,7 +73,7 @@ function render(tasks) {
                 <td>${task.task}</td>
                 <td>${task.complete}</td>
                 <td>
-                    <button>
+                    <button id ="delete-task">
                         Delete Task
                     </button>
                 </td>

@@ -25,7 +25,7 @@ router.get('/', (req, res)=>{
 router.post('/', (req, res) => {
     // only one input, so this will look a little weird in an array
     const task = [req.body.name, req.body.complete]
-    const queryParameters = task
+    //const queryParameters = task
 
     const queryText = `
             INSERT INTO "todos" ("task", "complete")

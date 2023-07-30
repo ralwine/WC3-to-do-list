@@ -62,12 +62,8 @@ function render(tasks) {
         //appending items, just task(s) to start
         let newRow = $(`
             <tr>
-                <td>${task}</td>
-                <td>
-                    <button>
-                        x
-                    </button>
-                </td>
+                <td>${task.task}</td>
+                <td>${task.complete}</td>
                 <td>
                     <button>
                         Delete Task
@@ -77,7 +73,7 @@ function render(tasks) {
         `);
         newRow.data('id', tasks.id)
         $('#taskTableBody').append(newRow);
-
+        
     }
 }
 

@@ -8,9 +8,9 @@ function onReady() {
 
     $('#submit-task').on('click', handleSubmit);
     // Checkbox listener for completed task?
-    //$
+    //$(,finishTasks);
     //DELETE button
-    $('#taskTableBody').on('click', '#delete-task', deleteTasks)
+    $('#taskTableBody').on('click', '#delete-task', deleteTasks);
 }
 
 // might as well start with our handleSubmit
@@ -58,7 +58,22 @@ function getTasks() {
 }
 
 function finishTasks() {
-    console.log("in finished tasks")
+    console.log("in finishTasks")
+    const taskID = $(this).parent().parent().data('id');
+    const taskStatus = $(this).data(false);
+    console.log("in finishTasks", taskID, taskStatus);
+    //ajax PUT
+    $.ajax({
+        type: 'PUT',
+        url: `/tasks/${taskID}`,
+        data: { newStatus: !taskStatus }
+    }).then((response) => {
+        console.log("Client-side PUT", response);
+        getTasks();
+    }).catch((error) => {
+        alert("Error in PUT client-side", error);
+    })
+
 }
 
 function deleteTasks() {
@@ -71,10 +86,10 @@ function deleteTasks() {
         method: 'DELETE',
         url: `/tasks/${taskID}`
     }).then((response) => {
-        console.log(`Deleted task id: ${taskID}`)
+        console.log(`Deleted task id: ${taskID}`);
         getTasks()
     }).catch((error) => {
-        alert("Error deleting task: ", error)
+        alert("Error deleting task: ", error);
     })
 
 }
@@ -89,7 +104,13 @@ function render(tasks) {
         let newRow = $(`
             <tr>
                 <td>${task.task}</td>
-                <td>${task.complete}</td>
+                <td>
+                    <select id="status">
+                        <option>Not Finished</option>
+                        <option>Finished</option>
+
+                    ${task.complete}</select>
+                </td>
                 <td>
                     <button id ="delete-task">
                         Delete Task

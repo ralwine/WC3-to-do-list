@@ -2,80 +2,54 @@ $(document).ready(onReady);
 console.log("The house of bling");
 getTasks();
 onReady();
-
-
 function onReady() {
-
     $('#submit-task').on('click', handleSubmit);
     // Checkbox listener for completed task?
-    //$(,finishTasks);
     //DELETE button
-    $('#taskTableBody').on('click', '#delete-task', deleteTasks);
+    $('#taskTableBody').on('click', '#delete-task', deleteTasks)
 }
-
 // might as well start with our handleSubmit
-function handleSubmit() {
+function handleSubmit(event) {
+    event.preventDefault()
     // target our input with the submit button.. cl first
     console.log("submit is being handled!");
     let task = $('#task-name').val();
     addTasks(task);
 }
-
 function addTasks(newTask) {
+    
     console.log("in addTasks", newTask);
     // this will be a POST route
-    const taskNstatus = {
+    const taskID = {
         name: newTask,
-        status: false
+        status: 'false'
     }
     $.ajax({
         type: 'POST',
         url: '/tasks',
-        data: taskNstatus
+        data: taskID
     }).then(function (response) {
         console.log("making POST request", response);
-        //getTasks when ready
+        console.log(taskID)
         getTasks()
     }).catch(function (error) {
         console.log("ERROR in POST request", error);
         alert("ERROR adding task!")
     })
 }
-
 function getTasks() {
     console.log("in getTasks")
     $.ajax({
         type: 'GET',
         url: '/tasks'
     }).then(function (response) {
-        console.log("making GET request", response);
+        console.log("making GET request");
         //render here?
         render(response)
     }).catch(function (error) {
         console.log('error in GETting tasks!', error);
     })
-
 }
-
-function finishTasks() {
-    console.log("in finishTasks")
-    const taskID = $(this).parent().parent().data('id');
-    const taskStatus = $(this).data(false);
-    console.log("in finishTasks", taskID, taskStatus);
-    //ajax PUT
-    $.ajax({
-        type: 'PUT',
-        url: `/tasks/${taskID}`,
-        data: { newStatus: !taskStatus }
-    }).then((response) => {
-        console.log("Client-side PUT", response);
-        getTasks();
-    }).catch((error) => {
-        alert("Error in PUT client-side", error);
-    })
-
-}
-
 function deleteTasks() {
     console.log("in deleteBook");
     console.log("clicking on: ", $(this));
@@ -86,31 +60,23 @@ function deleteTasks() {
         method: 'DELETE',
         url: `/tasks/${taskID}`
     }).then((response) => {
-        console.log(`Deleted task id: ${taskID}`);
+        console.log(`Deleted task id: ${taskID}`)
         getTasks()
     }).catch((error) => {
-        alert("Error deleting task: ", error);
+        alert("Error deleting task: ", error)
     })
-
 }
-
 function render(tasks) {
     $('#taskTableBody').empty();
     console.log(tasks);
     // for loop time
     for (let task of tasks) {
-        console.log("in for loop", task)
+        //console.log("in for loop", task)
         //appending items, just task(s) to start
         let newRow = $(`
             <tr>
-                <td>${task.task}</td>
-                <td>
-                    <select id="status">
-                        <option>Not Finished</option>
-                        <option>Finished</option>
-
-                    ${task.complete}</select>
-                </td>
+                <td>${task.name}</td>
+                <td>${task.status}</td>
                 <td>
                     <button id ="delete-task">
                         Delete Task
@@ -123,4 +89,3 @@ function render(tasks) {
 
     }
 }
-

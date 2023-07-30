@@ -24,7 +24,7 @@ function handleSubmit() {
 function addTasks(newTask) {
     console.log("in addTasks", newTask);
     // this will be a POST route
-    const taskNstatus= {
+    const taskNstatus = {
         name: newTask,
         status: false
     }
@@ -60,15 +60,17 @@ function getTasks() {
 function deleteTasks() {
     console.log("in deleteBook");
     console.log("clicking on: ", $(this));
-    const taskID =$(this).parent().parent().data('id');
+    const taskID = $(this)/*.parent().parent()*/.data('id');
     console.log("deleting: ", taskID); //showing undefined!
     //ajax DELETE
     $.ajax({
         method: 'DELETE',
         url: `/tasks/deletetasks/${taskID}`
-    }).then((response) =>{
+    }).then((response) => {
         console.log(`Deleted task id: ${taskID}`)
         getTasks()
+    }).catch((error) => {
+        alert("Error deleting task: ", error)
     })
 
 }
@@ -93,7 +95,7 @@ function render(tasks) {
         `);
         newRow.data('id', tasks.id)
         $('#taskTableBody').append(newRow);
-        
+
     }
 }
 

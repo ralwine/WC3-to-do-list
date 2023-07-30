@@ -1,4 +1,4 @@
-PLAN and it's EVOLUTION
+PLAN and its EVOLUTION
 
 THURSDAY
     - Read over project instructions a couple of times before formulating plan. Start with basic outline, take a lengthy break 
@@ -7,14 +7,17 @@ before reading over everything again and fleshing out. Start visualizing the end
 FRIDAY - Work on plan/outline a little more before proceeding on the project itself. That evening should be devoted to the most 
 barebones of requirements: make your files and folders, nest those files and folders in their respective places, set up the 
 database and link to pool, link/source files into html, require/install dependencies, etc. Essentially, the goal here is to get 
-the server up and running, appearing the browser, and then getting a good night's sleep!
+the server up and running, appearing the browser, and then getting a good night of sleep!
 
 SATURDAY - Get more of the plan tanslated from the outline into textual discourse. Main goal today is getting the static HTML 
 ("Add Task" button, input) in place, the listeners/handlers functioning for said HTML and the GET/POST routes working. Feeling 
 more confident in utilizing POSTMAN, but should not hesitate to reach out on Slack if in need of a refresher regarding its use. 
 Once this is accomplished and tasks are being added to DOM, work can commence on DELETE function if time/energy allows.
 
-SUNDAY -
+SUNDAY - Finish up debugging DELETE issues. Figure out final function that is likely a PUT route that will require a checkbox 
+with a boolean value toggle. This also needs to affect the color within the row of each respective task, so logic will have to 
+hook into CSS for this to occur. Get some wireframes up and do some more styling work (particularily with fonts and colors) in 
+CSS as well to finish up. YOU CAN DO THIS!
 
 
 

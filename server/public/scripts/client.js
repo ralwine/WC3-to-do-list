@@ -58,7 +58,19 @@ function getTasks() {
 }
 
 function deleteTasks() {
-    console.log("in deleteBook")
+    console.log("in deleteBook");
+    console.log("clicking on: ", $(this));
+    const taskID =$(this).parent().parent().data('id');
+    console.log("deleting: ", taskID); //showing undefined!
+    //ajax DELETE
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/deletetasks/${taskID}`
+    }).then((response) =>{
+        console.log(`Deleted task id: ${taskID}`)
+        getTasks()
+    })
+
 }
 
 function render(tasks) {

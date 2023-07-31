@@ -68,9 +68,22 @@ function deleteTasks() {
     })
 }
 
-function changeTaskStatus(){
+function changeTaskStatus() {
     console.log("in changeTaskStaus");
     console.log("clicking on: ", $(this));
+    const id = $(this).parent().parent().data('id');
+    const taskStatus = $(this).parent().parent().data('false');
+    //ajax PUT... fingers crossed
+    $.ajax({
+        type: 'PUT',
+        url: `/tasks/${id}`,
+        data: { newStatus: !taskStatus }
+    }).then((response) => {
+        console.log("Changing status with PUT", response)
+        getTasks();
+    }).catch((error) => {
+        alert("Error with PUT status at client", error)
+    })
 }
 
 function render(tasks) {
@@ -97,6 +110,6 @@ function render(tasks) {
         `);
         newRow.data('id', task.id)
         $('#taskTableBody').append(newRow);
-// task.task wtf? It works!
+        // task.task wtf? It works!
     }
 }

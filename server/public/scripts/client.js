@@ -6,9 +6,10 @@ function onReady() {
     $('#submit-task').on('click', handleSubmit);
     // Checkbox listener for completed task? Dropdown? Button?
     // CSS target required here?
-    $('#taskTableBody').on('click', '#change-status', changeTaskStatus)
+    $('#taskTableBody').on('click', '#change-status', changeTaskStatus);
+
     //DELETE button
-    $('#taskTableBody').on('click', '#delete-task', deleteTasks)
+    $('#taskTableBody').on('click', '#delete-task', deleteTasks);
 }
 // might as well start with our handleSubmit
 function handleSubmit(event) {
@@ -94,6 +95,9 @@ function render(tasks) {
     for (let task of tasks) {
         console.log("in for loop", task.name)
         //appending items, just task(s) to start
+        if(task.status==!'false'){
+            $('#tr').addClass('.finished');
+        }
         let newRow = $(`
             <tr>
                 <td>${task.task}</td>
@@ -113,8 +117,6 @@ function render(tasks) {
         $('#taskTableBody').append(newRow);
         // task.task wtf? It works!
         //... or is the CSS target happening in here?
-        if(task.status==true){
-            $('#change-status').addClass('.finished');
-        }
+       
     }
 }

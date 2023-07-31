@@ -2,9 +2,10 @@ body{
     background-color: cyan;
 }
 header{
-    font-family:cursive;
-    color: rgb(85, 66, 41);
-    text-decoration:wavy;
+    margin-left: 50px;
+    font-family: cursive;
+    color: rgb(175, 154, 22);
+    font-size: large;
 }
 /* get this thing wide screen! and align the form*/
 main{
@@ -16,13 +17,13 @@ table{
 }
 
 #taskTableBody{
-    background-color: antiquewhite;
+    background-color: rgb(224, 218, 211);
 }
 
 #center{
     text-align: center;
 }
-
+/* I know there's probably a more simpler way to combine these, but the clock is racing*/
 #centerToo{
     text-align: center;
 }
@@ -38,5 +39,5 @@ tbody{
 }
 
 .finished{
-    background-color: khaki;
+    background-color: blueviolet;
 }

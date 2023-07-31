@@ -5,6 +5,7 @@ onReady();
 function onReady() {
     $('#submit-task').on('click', handleSubmit);
     // Checkbox listener for completed task? Dropdown? Button?
+    // CSS target required here?
     $('#taskTableBody').on('click', '#change-status', changeTaskStatus)
     //DELETE button
     $('#taskTableBody').on('click', '#delete-task', deleteTasks)
@@ -96,12 +97,12 @@ function render(tasks) {
         let newRow = $(`
             <tr>
                 <td>${task.task}</td>
-                <td>${task.status}
+                <td id="center">${task.status}
                     <button id="change-status">
                         Finished
                     </button>
                 </td>
-                <td>
+                <td id="centerToo">
                     <button id ="delete-task">
                         Delete Task
                     </button>
@@ -111,5 +112,9 @@ function render(tasks) {
         newRow.data('id', task.id)
         $('#taskTableBody').append(newRow);
         // task.task wtf? It works!
+        //... or is the CSS target happening in here?
+        if(task.status==true){
+            $('#change-status').addClass('.finished');
+        }
     }
 }

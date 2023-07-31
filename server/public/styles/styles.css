@@ -6,6 +6,26 @@ header{
     color: rgb(85, 66, 41);
     text-decoration:wavy;
 }
+/* get this thing wide screen! and align the form*/
+main{
+    margin-left: 10px;
+}
+
+table{
+    width: 100%;
+}
+
+#taskTableBody{
+    background-color: antiquewhite;
+}
+
+#center{
+    text-align: center;
+}
+
+#centerToo{
+    text-align: center;
+}
 
 thead{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -15,4 +35,8 @@ thead{
 tbody{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 2px;
+}
+
+.finished{
+    background-color: khaki;
 }

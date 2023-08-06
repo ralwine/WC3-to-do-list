@@ -95,9 +95,7 @@ function render(tasks) {
     for (let task of tasks) {
         console.log("in for loop", task.name)
         //appending items, just task(s) to start
-        if(task.status==!'false'){
-            $('#tr').addClass('.finished');
-        }
+       
         let newRow = $(`
             <tr>
                 <td>${task.task}</td>
@@ -117,6 +115,7 @@ function render(tasks) {
         $('#taskTableBody').append(newRow);
         // task.task wtf? It works!
         //... or is the CSS target happening in here?
-       
+        
+
     }
 }

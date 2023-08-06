@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+
 require('dotenv').conifg();
+const myName = process.env.MY_NAME
+
 const router = require('./routes/tasks.router');
 
 // Setup body parser - to translating request body into JSON
@@ -14,6 +17,7 @@ app.use(express.static('server/public'));
 
 
 app.use('/tasks', router);
+
 
 const PORT = process.env.PORT || 5000;
 // Start express

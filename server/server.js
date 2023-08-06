@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-require('dotenv').conifg();
+require('dotenv').conifg;
 const myName = process.env.MY_NAME
 
 const router = require('./routes/tasks.router');
